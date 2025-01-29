@@ -5,3 +5,4 @@
 /backend/MoviesApp/MoviesApp.Application/bin
 /backend/MoviesApp/MoviesApp.Services/obj
 /backend/MoviesApp/MoviesApp.Services/bin
+backend/MoviesApp/MoviesApp/appsettings.Development.json
