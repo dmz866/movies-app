@@ -1,8 +1,8 @@
-import { NavigationRouter } from './routing';
+import { MoviesNavigationRouter } from "./modules/movies/routing";
 
 const App = () => {
     return (
-        <NavigationRouter></NavigationRouter>
+        <MoviesNavigationRouter></MoviesNavigationRouter>
     );
 }
 

@@ -8,6 +8,8 @@
 
         public string? Description { get; set; }
 
+        public string? ImageUrl { get; set; }        
+        
         public Actor[]? Actors { get; set; }
 
         public MovieRating[]? MovieRatings { get; set; }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Movies.Application.Commands.Movies.CreateMovie;
 using Movies.Application.Commands.Movies.DeleteMovie;
 using Movies.Application.Commands.Movies.UpdateMovie;
+using Movies.Application.Queries.Movies.GetMovie;
 using Movies.Application.Queries.Movies.GetMovies;
 
 namespace Movies.Api.Controllers
@@ -18,7 +19,7 @@ namespace Movies.Api.Controllers
         [HttpGet("{movieId}")]
         public async Task<IActionResult> GetMovie(int movieId)
         {
-            var request = new GetMoviesQuery();
+            var request = new GetMovieQuery() { MovieId = movieId };
             var result = await _mediator.Send(request);
 
             return Ok(result);

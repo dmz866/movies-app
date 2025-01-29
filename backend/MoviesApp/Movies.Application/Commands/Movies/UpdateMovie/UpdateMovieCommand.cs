@@ -9,6 +9,10 @@ namespace Movies.Application.Commands.Movies.UpdateMovie
 
         public required string Name { get; set; }
 
+        public string? Description { get; set; }
+
+        public string? ImageUrl { get; set; }
+
         public IEnumerable<MovieRating>? MovieRatings { get; set; }
     }
 }

@@ -11,5 +11,13 @@
         public required Movie Movie { get; set; }
 
         public required Actor Actor { get; set; }
+
+        public DateTimeOffset? Created { get; set; }
+
+        public string? CreatedBy { get; set; } = string.Empty;
+
+        public DateTimeOffset? Updated { get; set; }
+
+        public string? UpdatedBy { get; set; } = string.Empty;
     }
 }

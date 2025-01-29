@@ -11,6 +11,8 @@ namespace Movies.Application.Commands.Movies.CreateMovie
 
         public string? Description { get; set; }
 
+        public string? ImageUrl { get; set; }
+
         public IEnumerable<MovieRating>? MovieRatings { get; set; }
     }
 }

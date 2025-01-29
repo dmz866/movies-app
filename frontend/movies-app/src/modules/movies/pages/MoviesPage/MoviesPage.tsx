@@ -13,7 +13,7 @@ export const MoviesPage = () => {
 
     return (
         <div className="flex-row">
-            <div className="w-[800px] mx-auto justify-center flex mt-10">
+            <div className="w-[900px] mx-auto justify-center flex mt-10">
                 <div className="w-full">
                     <p className="text-3xl font-bold my-2">Movies App</p>
                     <div className="mx-auto justify-center flex-row p-4">
@@ -34,10 +34,10 @@ export const MoviesPage = () => {
                             />
                         }
                     </div>
-                    <div className="p-3 flex flex-wrap">
+                    <div className="p-3 flex flex-wrap gap-8">
                         {noMovieFound && <p>No Movies found</p>}
-                        {movies?.map((p) => {
-                            return <MovieCard key={p.name} movie={p} />
+                        {movies?.map((p, indx) => {
+                            return <MovieCard key={`${p.name}-${indx}`} movie={p} />
                         })}
                     </div>
                 </div>

@@ -11,6 +11,8 @@ namespace Movies.Application.Entities
             {
                 MovieId = movie.MovieId,
                 Name = movie.Name,
+                Description = movie.Description,
+                ImageUrl = movie.ImageUrl,
             };
         }
 
@@ -20,6 +22,8 @@ namespace Movies.Application.Entities
             {
                 MovieId = movie.MovieId,
                 Name = movie.Name,
+                Description = movie.Description,
+                ImageUrl = movie.ImageUrl,
             };
         }
 
@@ -30,6 +34,8 @@ namespace Movies.Application.Entities
             {
                 MovieId = movie.MovieId,
                 Name = movie.Name,
+                Description = movie.Description,
+                ImageUrl = movie.ImageUrl,
             };
         }
 
@@ -39,6 +45,8 @@ namespace Movies.Application.Entities
             {
                 MovieId = movie.MovieId,
                 Name = movie.Name,
+                Description = movie.Description,
+                ImageUrl = movie.ImageUrl,
             };
         }
     }
