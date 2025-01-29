@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { ToastContainer } from 'react-toastify';
-import { BasicContainer } from '../../../common/component';
+import { BasicContainer } from '../../../common/components';
 import { ACTORS_PATH, MOVIES_PATH } from '../../constants/route-paths';
 
 export const HomePage = () => {

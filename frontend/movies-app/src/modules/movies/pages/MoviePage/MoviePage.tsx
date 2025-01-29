@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useNavigate, useSearchParams } from "react-router";
 import { ClipLoader } from 'react-spinners';
-import { BasicContainer } from '../../../common/component';
+import { BasicContainer } from '../../../common/components';
 import { MOVIES_PATH } from "../../constants";
 import { useMoviePage } from './useMoviePage';
 
