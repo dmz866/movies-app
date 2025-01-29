@@ -1,5 +1,10 @@
+using Azure.Core;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Movies.Application.Commands.Movies.CreateMovie;
+using Movies.Application.Commands.Movies.DeleteMovie;
+using Movies.Application.Commands.Movies.UpdateMovie;
 using Movies.Application.Queries.Movies.GetMovies;
 
 namespace MoviesApp.Controllers
@@ -12,13 +17,47 @@ namespace MoviesApp.Controllers
         {
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetMovies()
+        [HttpGet("{movieId}")]
+        public async Task<IActionResult> GetMovies(int movieId)
         {
             var request = new GetMoviesQuery();
             var result = await _mediator.Send(request);
 
             return Ok(result);
+        }
+
+        [HttpGet("{name}")]
+        public async Task<IActionResult> GetMovies(string? name)
+        {
+            var request = new GetMoviesQuery() { Name = name };
+            var result = await _mediator.Send(request);
+
+            return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateMovie([FromBody] CreateMovieCommand request)
+        {
+            var result = await _mediator.Send(request);
+
+            return Ok(result);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateMovie([FromBody] UpdateMovieCommand request)
+        {
+            var result = await _mediator.Send(request);
+
+            return Ok(result);
+        }
+
+        [HttpDelete("{movieId}")]
+        public async Task<IActionResult> DeleteMovie(int movieId)
+        {
+            var request = new DeleteMovieCommand() { MovieId = movieId };
+            await _mediator.Send(request);
+
+            return Ok();
         }
     }
 }

@@ -12,3 +12,7 @@ backend/MoviesApp/MoviesApp/appsettings.Development.json
 /backend/MoviesApp/Movies.Application/bin
 /backend/MoviesApp/Movies.Services/obj
 /backend/MoviesApp/Movies.Services/bin
+/backend/MoviesApp/Movies.Api/Properties/launchSettings.json
+/backend/MoviesApp/obj/Movies.Api.EntityFrameworkCore.targets
+/backend/MoviesApp/obj/Movies.Services.EntityFrameworkCore.targets
+/backend/MoviesApp/Movies.Api/appsettings.Development.json
