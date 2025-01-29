@@ -35,8 +35,9 @@ namespace Movies.Services
         public async Task<Actor?> GetActor(int actorId)
         {
             return await _context.Actors
-               .Where(u => u.ActorId.Equals(actorId))
-               .FirstOrDefaultAsync();
+                .Include(a => a.Movies)
+                .Where(u => u.ActorId.Equals(actorId))
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Actor>> GetActors(string? name)
@@ -44,6 +45,7 @@ namespace Movies.Services
             if (!string.IsNullOrEmpty(name))
             {
                 return await _context.Actors
+                    .Include(a => a.Movies)
                     .Where(m => m.Name.Contains(name))
                     .ToListAsync();
             }

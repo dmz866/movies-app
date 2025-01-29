@@ -24,7 +24,7 @@ namespace Movies.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("search-by/{name}")]
         public async Task<IActionResult> GetMovies(string? name)
         {
             var request = new GetMoviesQuery() { Name = name };

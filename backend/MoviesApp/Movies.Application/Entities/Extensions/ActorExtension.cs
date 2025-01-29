@@ -11,6 +11,7 @@ namespace Movies.Application.Entities
             {
                 ActorId = actor.ActorId,
                 Name = actor.Name,
+                Movies = actor.Movies?.Select(m => m.ToDomain()).ToArray() ?? [],
             };
         }
 

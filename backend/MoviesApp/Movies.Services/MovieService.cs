@@ -7,13 +7,25 @@ namespace Movies.Services
 {
     public class MovieService : BaseService<MoviesContext>, IMovieService
     {
-        public MovieService(MoviesContext context) : base(context)
+        private readonly IMovieRatingService _movieRatingService;
+
+        public MovieService(MoviesContext context, IMovieRatingService movieRatingService) : base(context)
         {
+            _movieRatingService = movieRatingService;
         }
 
         public async Task<Movie> CreateMovie(Movie movie)
-        {            
+        {
             var model = await _context.Movies.AddAsync(movie);
+
+            if (movie.MovieRatings != null && movie.MovieRatings.Any())
+            {
+                foreach (var movieRating in movie.MovieRatings)
+                {
+                    await _movieRatingService.CreateMovieRating(movieRating);
+                }
+            }
+
             await _context.SaveChangesAsync();
 
             return model.Entity;
@@ -23,7 +35,7 @@ namespace Movies.Services
         {
             var movie = await GetMovie(movieId);
 
-            if (movie == null) 
+            if (movie == null)
             {
                 throw new Exception($"Movie {movieId} not found");
             }
@@ -35,15 +47,19 @@ namespace Movies.Services
         public async Task<Movie?> GetMovie(int movieId)
         {
             return await _context.Movies
-               .Where(u => u.MovieId.Equals(movieId))
-               .FirstOrDefaultAsync();
+                .Include(a => a.Actors)
+                .Include(a => a.MovieRatings)
+                .Where(u => u.MovieId.Equals(movieId))
+                .FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Movie>> GetMovies(string? name)
         {
-            if(!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(name))
             {
                 return await _context.Movies
+                    .Include(a => a.Actors)
+                    .Include(a => a.MovieRatings)
                     .Where(m => m.Name.Contains(name))
                     .ToListAsync();
             }

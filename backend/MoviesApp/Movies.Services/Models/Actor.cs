@@ -4,8 +4,8 @@
     {
         public int ActorId { get; set; }
 
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public IEnumerable<Movie> Movies { get; set; }
+        public IEnumerable<Movie>? Movies { get; set; }
     }
 }

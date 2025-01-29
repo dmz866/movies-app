@@ -25,7 +25,7 @@ namespace Actors.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{name}")]
+        [HttpGet("search-by/{name}")]
         public async Task<IActionResult> GetActors(string? name)
         {
             var request = new GetActorsQuery() { Name = name };

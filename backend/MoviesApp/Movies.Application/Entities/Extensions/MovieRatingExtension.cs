@@ -13,6 +13,7 @@ namespace Movies.Application.Entities
                 MovieRatingId = movieRating.MovieRatingId,
                 Name = movieRating.Name,
                 Description = movieRating.Description,
+                MovieId = movieRating.MovieId,
             };
         }
 
@@ -23,6 +24,7 @@ namespace Movies.Application.Entities
                 MovieRatingId = movieRating.MovieRatingId,
                 Name = movieRating.Name,
                 Description = movieRating.Description,
+                MovieId = movieRating.MovieId,
             };
         }
 
@@ -34,6 +36,7 @@ namespace Movies.Application.Entities
                 MovieRatingId = movieRating.MovieRatingId,
                 Name = movieRating.Name,
                 Description = movieRating.Description,
+                MovieId = movieRating.MovieId,
             };
         }
 
@@ -44,6 +47,7 @@ namespace Movies.Application.Entities
                 MovieRatingId = movieRating.MovieRatingId,
                 Name = movieRating.Name,
                 Description = movieRating.Description,
+                MovieId = movieRating.MovieId,
             };
         }
     }

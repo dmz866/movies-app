@@ -4,12 +4,12 @@
     {
         public int MovieRatingId { get; set; }
 
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public int MovieId { get; set; }
+        public required int MovieId { get; set; }
 
-        public IEnumerable<Movie> Movies { get; set; }
+        public IEnumerable<Movie>? Movies { get; set; }
     }
 }
