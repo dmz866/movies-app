@@ -39,8 +39,15 @@ namespace Movies.Services
                .FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Movie>> GetMovies()
+        public async Task<IEnumerable<Movie>> GetMovies(string? name)
         {
+            if(!string.IsNullOrEmpty(name))
+            {
+                return await _context.Movies
+                    .Where(m => m.Name.Contains(name))
+                    .ToListAsync();
+            }
+
             return await _context.Movies.ToListAsync();
         }
 

@@ -6,5 +6,7 @@ namespace Movies.Application.Commands.Movies.UpdateMovie
     public class UpdateMovieCommand : IRequest<Movie>
     {
         public int MovieId { get; set; }
+
+        public string Name { get; set; }
     }
 }

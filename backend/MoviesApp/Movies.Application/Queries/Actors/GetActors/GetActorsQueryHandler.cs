@@ -15,7 +15,7 @@ namespace Movies.Application.Queries.Actors.GetActors
 
         public async Task<IEnumerable<Actor>> Handle(GetActorsQuery request, CancellationToken cancellationToken)
         {            
-            var actors = await _actorService.GetActors();
+            var actors = await _actorService.GetActors(request.Name);
 
             return actors.Select(m => m.ToDomain());
         }

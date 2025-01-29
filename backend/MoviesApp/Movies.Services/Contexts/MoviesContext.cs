@@ -22,6 +22,10 @@ namespace Movies.Services.Contexts
 
         public DbSet<Actor> Actors { get; set; }
 
+        public DbSet<MovieActor> MovieActors { get; set; }
+
+        public DbSet<MovieRating> MovieRatings { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

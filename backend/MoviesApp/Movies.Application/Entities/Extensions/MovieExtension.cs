@@ -10,6 +10,7 @@ namespace Movies.Application.Entities
             return new Movie()
             {
                 MovieId = movie.MovieId,
+                Name = movie.Name,
             };
         }
 
@@ -18,6 +19,7 @@ namespace Movies.Application.Entities
             return new Services.Models.Movie()
             {
                 MovieId = movie.MovieId,
+                Name = movie.Name,
             };
         }
 
@@ -27,6 +29,7 @@ namespace Movies.Application.Entities
             return new Services.Models.Movie()
             {
                 MovieId = movie.MovieId,
+                Name = movie.Name,
             };
         }
 
@@ -35,6 +38,7 @@ namespace Movies.Application.Entities
             return new Services.Models.Movie()
             {
                 MovieId = movie.MovieId,
+                Name = movie.Name,
             };
         }
     }

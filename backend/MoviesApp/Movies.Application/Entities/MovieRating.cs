@@ -1,8 +1,8 @@
 ﻿namespace Movies.Application.Entities
 {
-    public class Movie
+    public class MovieRating
     {
-        public int MovieId { get; set; }
+        public int MovieRatingId { get; set; }
 
         public string Name { get; set; }
 

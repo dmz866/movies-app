@@ -6,5 +6,7 @@ namespace Movies.Application.Commands.Actors.CreateActor
     public class CreateActorCommand : IRequest<Actor>
     {
         public int ActorId { get; set; }
+
+        public string Name { get; set; }
     }
 }

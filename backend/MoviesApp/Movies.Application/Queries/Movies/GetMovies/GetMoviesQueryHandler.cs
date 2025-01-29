@@ -15,7 +15,7 @@ namespace Movies.Application.Queries.Movies.GetMovies
 
         public async Task<IEnumerable<Movie>> Handle(GetMoviesQuery request, CancellationToken cancellationToken)
         {            
-            var movies = await _movieService.GetMovies();
+            var movies = await _movieService.GetMovies(request.Name);
 
             return movies.Select(m => m.ToDomain());
         }
