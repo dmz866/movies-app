@@ -2,7 +2,7 @@ import { MoviesNavigationRouter } from "./modules/movies/routing";
 
 const App = () => {
     return (
-        <MoviesNavigationRouter></MoviesNavigationRouter>
+        <MoviesNavigationRouter />
     );
 }
 
