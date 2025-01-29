@@ -1,13 +1,11 @@
-using Azure.Core;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Movies.Application.Commands.Movies.CreateMovie;
 using Movies.Application.Commands.Movies.DeleteMovie;
 using Movies.Application.Commands.Movies.UpdateMovie;
 using Movies.Application.Queries.Movies.GetMovies;
 
-namespace MoviesApp.Controllers
+namespace Movies.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,7 +16,7 @@ namespace MoviesApp.Controllers
         }
 
         [HttpGet("{movieId}")]
-        public async Task<IActionResult> GetMovies(int movieId)
+        public async Task<IActionResult> GetMovie(int movieId)
         {
             var request = new GetMoviesQuery();
             var result = await _mediator.Send(request);

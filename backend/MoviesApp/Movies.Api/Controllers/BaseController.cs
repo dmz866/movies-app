@@ -1,15 +1,15 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MoviesApp.Controllers
+namespace Movies.Api.Controllers
 {
     public abstract class BaseController : ControllerBase
     {
         protected IMediator _mediator { get; private set; }
 
-        protected ILogger<MoviesController> _logger;
+        protected ILogger<BaseController> _logger;
 
-        internal BaseController(IMediator mediator, ILogger<MoviesController> logger)
+        internal BaseController(IMediator mediator, ILogger<BaseController> logger)
         {
             if (mediator == null)
             {
