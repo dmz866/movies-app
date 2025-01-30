@@ -192,6 +192,57 @@ namespace Movies.Services.Contexts
                     ActorId = 5,
                 }
             );
+
+            modelBuilder.Entity<MovieRating>().HasData(
+                new MovieRating
+                {
+                    MovieRatingId = 1,
+                    MovieId = 1,
+                    Value = 9,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 2,
+                    MovieId = 1,
+                    Value = 8,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 3,
+                    MovieId = 1,
+                    Value = 8.7M,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 4,
+                    MovieId = 2,
+                    Value = 7,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 5,
+                    MovieId = 2,
+                    Value = 6.7M,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 6,
+                    MovieId = 2,
+                    Value = 8.1M,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 7,
+                    MovieId = 3,
+                    Value = 9.2M,
+                },
+                new MovieRating
+                {
+                    MovieRatingId = 8,
+                    MovieId = 3,
+                    Value = 9.1M,
+                }
+            );
         }
     }
 }

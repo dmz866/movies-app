@@ -12,7 +12,7 @@ using Movies.Services.Contexts;
 namespace Movies.Api.Migrations
 {
     [DbContext(typeof(MoviesContext))]
-    [Migration("20250130013442_InitDB")]
+    [Migration("20250130141058_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
@@ -303,7 +303,7 @@ namespace Movies.Api.Migrations
                         new
                         {
                             MovieActorId = 4,
-                            ActorId = 2,
+                            ActorId = 5,
                             CreatedBy = "",
                             MovieId = 2,
                             UpdatedBy = ""
@@ -356,15 +356,8 @@ namespace Movies.Api.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset?>("Updated")
                         .HasColumnType("datetimeoffset");
@@ -372,9 +365,78 @@ namespace Movies.Api.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("Value")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("MovieRatingId");
 
                     b.ToTable("MovieRatings");
+
+                    b.HasData(
+                        new
+                        {
+                            MovieRatingId = 1,
+                            CreatedBy = "",
+                            MovieId = 1,
+                            UpdatedBy = "",
+                            Value = 9m
+                        },
+                        new
+                        {
+                            MovieRatingId = 2,
+                            CreatedBy = "",
+                            MovieId = 1,
+                            UpdatedBy = "",
+                            Value = 8m
+                        },
+                        new
+                        {
+                            MovieRatingId = 3,
+                            CreatedBy = "",
+                            MovieId = 1,
+                            UpdatedBy = "",
+                            Value = 8.7m
+                        },
+                        new
+                        {
+                            MovieRatingId = 4,
+                            CreatedBy = "",
+                            MovieId = 2,
+                            UpdatedBy = "",
+                            Value = 7m
+                        },
+                        new
+                        {
+                            MovieRatingId = 5,
+                            CreatedBy = "",
+                            MovieId = 2,
+                            UpdatedBy = "",
+                            Value = 6.7m
+                        },
+                        new
+                        {
+                            MovieRatingId = 6,
+                            CreatedBy = "",
+                            MovieId = 2,
+                            UpdatedBy = "",
+                            Value = 8.1m
+                        },
+                        new
+                        {
+                            MovieRatingId = 7,
+                            CreatedBy = "",
+                            MovieId = 3,
+                            UpdatedBy = "",
+                            Value = 9.2m
+                        },
+                        new
+                        {
+                            MovieRatingId = 8,
+                            CreatedBy = "",
+                            MovieId = 3,
+                            UpdatedBy = "",
+                            Value = 9.1m
+                        });
                 });
 
             modelBuilder.Entity("ActorMovie", b =>
@@ -416,7 +478,7 @@ namespace Movies.Api.Migrations
                         .IsRequired();
 
                     b.HasOne("Movies.Services.Models.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("MovieActors")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -424,6 +486,11 @@ namespace Movies.Api.Migrations
                     b.Navigation("Actor");
 
                     b.Navigation("Movie");
+                });
+
+            modelBuilder.Entity("Movies.Services.Models.Movie", b =>
+                {
+                    b.Navigation("MovieActors");
                 });
 #pragma warning restore 612, 618
         }

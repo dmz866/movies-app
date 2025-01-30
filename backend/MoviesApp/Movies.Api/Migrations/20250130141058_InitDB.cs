@@ -36,8 +36,7 @@ namespace Movies.Api.Migrations
                 {
                     MovieRatingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MovieId = table.Column<int>(type: "int", nullable: false),
                     Created = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -158,6 +157,21 @@ namespace Movies.Api.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "MovieRatings",
+                columns: new[] { "MovieRatingId", "Created", "CreatedBy", "MovieId", "Updated", "UpdatedBy", "Value" },
+                values: new object[,]
+                {
+                    { 1, null, "", 1, null, "", 9m },
+                    { 2, null, "", 1, null, "", 8m },
+                    { 3, null, "", 1, null, "", 8.7m },
+                    { 4, null, "", 2, null, "", 7m },
+                    { 5, null, "", 2, null, "", 6.7m },
+                    { 6, null, "", 2, null, "", 8.1m },
+                    { 7, null, "", 3, null, "", 9.2m },
+                    { 8, null, "", 3, null, "", 9.1m }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Movies",
                 columns: new[] { "MovieId", "Created", "CreatedBy", "Description", "ImageUrl", "Name", "Updated", "UpdatedBy" },
                 values: new object[,]
@@ -182,7 +196,7 @@ namespace Movies.Api.Migrations
                     { 1, 1, null, "", 1, null, "" },
                     { 2, 2, null, "", 1, null, "" },
                     { 3, 2, null, "", 2, null, "" },
-                    { 4, 2, null, "", 2, null, "" },
+                    { 4, 5, null, "", 2, null, "" },
                     { 5, 2, null, "", 3, null, "" },
                     { 6, 1, null, "", 3, null, "" },
                     { 7, 4, null, "", 4, null, "" },
