@@ -35,8 +35,15 @@ namespace Movies.Services
         public async Task<Actor?> GetActor(int actorId)
         {
             return await _context.Actors
-                .Include(a => a.Movies)
                 .Where(u => u.ActorId.Equals(actorId))
+                .Select(a => new Actor
+                {
+                    Name = a.Name,
+                    Description = a.Description,
+                    ImageUrl = a.ImageUrl,
+                    ActorId = a.ActorId,
+                    Movies= _context.MovieActors.Where(ma => ma.ActorId.Equals(actorId)).Select(ma => ma.Movie).ToList()
+                })
                 .FirstOrDefaultAsync();
         }
 

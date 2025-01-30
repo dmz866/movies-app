@@ -13,7 +13,7 @@ export const ActorDetailsPage = () => {
 
     useEffect(() => {
         const id = search.get('actorId') ? +search.get('actorId')! : undefined;
-console.log(id)
+
         if (!id || isNaN(id)) navigateToActors();
 
         getActor(id!);
@@ -34,7 +34,14 @@ console.log(id)
                         <p className="text-5xl font-bold mb-8">{actor.name}</p>
                         <div className='flex gap-x-4'>
                             <p className="text-sm font-bold my-4">{actor.description}</p>
-                            <img className='rounded-xl' alt={actor.name} src={actor.imageUrl || '/images/no-picture.jpg'} height={300} width={200} /></div>
+                            <img className='rounded-xl' alt={actor.name} src={actor.imageUrl || '/images/no-picture.jpg'} height={300} width={200} />
+                        </div>
+                        <div className="flex">
+                            <div className="flex-row">
+                                <p className="text-xl font-bold my-2">Movies</p>
+                                {actor.movies?.map((a, indx) => <li key={`${a.name}-${indx}`}>{a.name}</li>)}
+                            </div>
+                        </div>
                         <div className='flex justify-center mt-5'>
                             <button className="mx-auto w-96 border rounded-lg" onClick={navigateToActors}>Back</button>
                         </div>

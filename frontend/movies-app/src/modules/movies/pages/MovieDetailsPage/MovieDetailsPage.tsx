@@ -34,8 +34,8 @@ export const MovieDetailsPage = () => {
                         <p className="text-5xl font-bold mb-8">{movie.name}</p>
                         <div className='flex gap-x-4'>
                             <p className="text-sm font-bold my-4">{movie.description}</p>
-                            <img className='rounded-xl' alt={movie.name} src={movie.imageUrl || '/images/no-picture.jpg'} height={300} width={200} /></div>
-
+                            <img className='rounded-xl' alt={movie.name} src={movie.imageUrl || '/images/no-picture.jpg'} height={300} width={200} />
+                        </div>
                         <div className="flex">
                             <div className="flex-row">
                                 <p className="text-xl font-bold my-2">Actors</p>
