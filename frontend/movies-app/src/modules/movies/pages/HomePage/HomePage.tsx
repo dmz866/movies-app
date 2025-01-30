@@ -13,15 +13,14 @@ export const HomePage = () => {
     return (
         <BasicContainer>
             <div className='flex-row'>
-                <p className="text-3xl font-bold my-2">Movies App</p>
                 <div className="flex justify-center gap-8">
-                    <div onClick={() => navigateTo(MOVIES_PATH)}>
-                        <p className="text-3xl font-bold my-2">Movies</p>
-                        <img className='hover:cursor-pointer' alt='movie' src='/images/movie.jpeg' height={300} width={200} />
+                    <div className='hover:cursor-pointer' onClick={() => navigateTo(MOVIES_PATH)}>
+                        <p className="text-white text-5xl font-bold my-2">Movies</p>
+                        <img className='w-64 h-96 object-fill rounded-lg' alt='movie' src='/images/movie.jpeg' />
                     </div>
-                    <div onClick={() => navigateTo(ACTORS_PATH)}>
-                        <p className="text-3xl font-bold my-2">Actors</p>
-                        <img className='hover:cursor-pointer' alt='actors' src='/images/rock.jpg' height={300} width={150} />
+                    <div className='hover:cursor-pointer' onClick={() => navigateTo(ACTORS_PATH)}>
+                        <p className="text-white text-5xl font-bold my-2">Actors</p>
+                        <img className='w-64 h-96 object-fill rounded-lg' alt='actors' src='/images/rock.jpg' />
                     </div>
                 </div>
                 <ToastContainer /></div>

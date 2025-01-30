@@ -5,7 +5,7 @@ type TProps = {
 
 export const BasicContainer = ({ children }: TProps) => {
     return (
-        <div className="min-w-[800px] justify-center flex mt-10">
+        <div className="min-w-[900px] justify-center mt-10 h-screen">
             {children}
         </div>
     );

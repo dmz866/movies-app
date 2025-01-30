@@ -30,7 +30,7 @@ export const MoviePage = () => {
                 }
                 {
                     movie &&
-                    <div className="flex-row p-8 rounded-lg border border-gray-300 gap-4">
+                    <div className="text-white flex-row p-8 rounded-lg border border-gray-300 gap-4">
                         <p className="text-5xl font-bold mb-8">{movie.name}</p>
                         <div className='flex gap-x-4'>
                             <p className="text-sm font-bold my-4">{movie.description}</p>

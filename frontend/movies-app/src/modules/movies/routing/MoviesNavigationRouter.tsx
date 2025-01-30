@@ -10,10 +10,6 @@ import { MoviesPage } from '../pages/MoviesPage/MoviesPage';
 
 const headerLinks = [
     {
-        name: 'Home',
-        path: '/'
-    },
-    {
         name: 'Movies',
         path: MOVIES_PATH
     },
@@ -34,17 +30,18 @@ export const MoviesNavigationRouter = () => {
     } as IMovieContext), [searchMovieName, updateSearchMovieName]);
 
     return (
-        <MovieContext.Provider value={contextValue}>
-            <BrowserRouter>
-                <Header links={headerLinks} />
-                <Routes>
-                    <Route path='/' element={<HomePage />} />
-                    <Route path={MOVIES_PATH} element={<MoviesPage />} />
-                    <Route path={ACTORS_PATH} element={<ActorsPage />} />
-                    <Route path={MOVIE_PATH} element={<MoviePage />} />
-                </Routes>
-            </BrowserRouter>
-        </MovieContext.Provider>
-
+        <div className="bg-movies h-full">
+            <MovieContext.Provider value={contextValue}>
+                <BrowserRouter>
+                    <Header links={headerLinks} />
+                    <Routes>
+                        <Route path='/' element={<HomePage />} />
+                        <Route path={MOVIES_PATH} element={<MoviesPage />} />
+                        <Route path={ACTORS_PATH} element={<ActorsPage />} />
+                        <Route path={MOVIE_PATH} element={<MoviePage />} />
+                    </Routes>
+                </BrowserRouter>
+            </MovieContext.Provider>
+        </div>
     );
 }
