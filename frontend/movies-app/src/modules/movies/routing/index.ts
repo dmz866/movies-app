@@ -1,2 +1,2 @@
-export * from './MoviesNavigationRouter';
+export * from './NavigationRouter';
 

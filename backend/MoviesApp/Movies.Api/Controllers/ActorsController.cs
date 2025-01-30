@@ -4,6 +4,7 @@ using Movies.Api.Controllers;
 using Movies.Application.Commands.Actors.CreateActor;
 using Movies.Application.Commands.Actors.DeleteActor;
 using Movies.Application.Commands.Actors.UpdateActor;
+using Movies.Application.Queries.Actors.GetActor;
 using Movies.Application.Queries.Actors.GetActors;
 
 namespace Actors.Api.Controllers
@@ -19,7 +20,7 @@ namespace Actors.Api.Controllers
         [HttpGet("{actorId}")]
         public async Task<IActionResult> GetActor(int actorId)
         {
-            var request = new GetActorsQuery();
+            var request = new GetActorQuery() { ActorId = actorId };
             var result = await _mediator.Send(request);
 
             return Ok(result);

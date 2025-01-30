@@ -66,6 +66,12 @@ namespace Movies.Api.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -85,6 +91,8 @@ namespace Movies.Api.Migrations
                         {
                             ActorId = 1,
                             CreatedBy = "",
+                            Description = "Robert Anthony De Niro is an American actor and film producer. He is considered to be one of the greatest and most influential actors of his generation.[a] De Niro is the recipient of various accolades, including two Academy Awards and a Golden Globe Award as well as nominations for eight BAFTA Awards and four Emmy Awards. He was honored with the AFI Life Achievement Award in 2003, the Kennedy Center Honors in 2009, the Cecil B. DeMille Award in 2011, and the Screen Actors Guild Life Achievement Award in 2019. De Niro was presented with the Presidential Medal of Freedom by U.S. president Barack Obama in 2016.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/2/25/Robert_De_Niro_Cannes_2016_2.jpg",
                             Name = "Robert De Niro",
                             UpdatedBy = ""
                         },
@@ -92,6 +100,8 @@ namespace Movies.Api.Migrations
                         {
                             ActorId = 2,
                             CreatedBy = "",
+                            Description = "John Joseph Nicholson (born April 22, 1937) is an American retired actor and filmmaker.[1] Nicholson is widely regarded as one of the greatest actors of the 20th century.[2][3] Throughout his five-decade career he received numerous accolades, including three Academy Awards, three BAFTA Film Awards, six Golden Globe Awards, and a Grammy Award. He also received the American Film Institute's Life Achievement Award in 1994 and the Kennedy Center Honor in 2001. In many of his films, he played rebels against the social structure.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/e/ec/Jack_Nicholson_2001.jpg",
                             Name = "Jack Nicholson",
                             UpdatedBy = ""
                         },
@@ -99,6 +109,8 @@ namespace Movies.Api.Migrations
                         {
                             ActorId = 4,
                             CreatedBy = "",
+                            Description = "Marlon Brando Jr. (April 3, 1924 – July 1, 2004) was an American actor. Widely regarded as one of the greatest cinema actors of the 20th century,[1][2] Brando received numerous accolades throughout his career, which spanned six decades, including two Academy Awards, three British Academy Film Awards, a Cannes Film Festival Award, two Golden Globe Awards, and a Primetime Emmy Award. Brando is credited with being one of the first actors to bring the Stanislavski system of acting and method acting to mainstream audiences.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Marlon_Brando_publicity_for_One-Eyed_Jacks.png/934px-Marlon_Brando_publicity_for_One-Eyed_Jacks.png",
                             Name = "Marlon Brando",
                             UpdatedBy = ""
                         },
@@ -106,6 +118,8 @@ namespace Movies.Api.Migrations
                         {
                             ActorId = 5,
                             CreatedBy = "",
+                            Description = "Denzel Hayes Washington Jr. (born December 28, 1954) is an American actor, producer, and director. Known for his dramatic roles on stage and screen, The New York Times named him the greatest actor of the 21st century in 2020.[2][3] He has received several accolades, including two Academy Awards, three Golden Globe Awards, and a Tony Award as well as nominations for two Emmy Awards and a Grammy Award. Washington has been honored with the Cecil B. DeMille Award in 2016, AFI Life Achievement Award in 2019, and the Presidential Medal of Freedom in 2025.",
+                            ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Denzel_Washington_at_the_2024_Toronto_International_Film_Festival_02_%28cropped%29.jpg/989px-Denzel_Washington_at_the_2024_Toronto_International_Film_Festival_02_%28cropped%29.jpg",
                             Name = "Denzel Washington",
                             UpdatedBy = ""
                         });

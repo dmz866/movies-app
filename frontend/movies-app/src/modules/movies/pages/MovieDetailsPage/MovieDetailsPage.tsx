@@ -3,13 +3,13 @@ import { useNavigate, useSearchParams } from "react-router";
 import { ClipLoader } from 'react-spinners';
 import { BasicContainer } from '../../../common/components';
 import { MOVIES_PATH } from "../../constants";
-import { useMoviePage } from './useMoviePage';
+import { useMovieDetailsPage } from './useMovieDetailsPage';
 
-export const MoviePage = () => {
+export const MovieDetailsPage = () => {
     const [search] = useSearchParams();
     const navigate = useNavigate();
-    const navigateToMovies = useCallback(() => navigate(MOVIES_PATH), []);
-    const { isLoading, movie, getMovie } = useMoviePage();
+    const navigateToMovies = useCallback(() => navigate(MOVIES_PATH), [navigate]);
+    const { isLoading, movie, getMovie } = useMovieDetailsPage();
 
     useEffect(() => {
         const id = search.get('movieId') ? +search.get('movieId')! : undefined;
@@ -17,7 +17,7 @@ export const MoviePage = () => {
         if (!id || isNaN(id)) navigateToMovies();
 
         getMovie(id!);
-    }, [search]);
+    }, [search, navigate, navigateToMovies, getMovie]);
 
     return (
         <BasicContainer>

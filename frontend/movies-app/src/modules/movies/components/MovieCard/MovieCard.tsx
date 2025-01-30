@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
-import { MOVIE_PATH } from "../../constants";
+import { MOVIE_DETAILS_PATH } from "../../constants";
 import { Movie } from "../../models";
 
 type TProps = {
@@ -10,7 +10,7 @@ type TProps = {
 export const MovieCard = ({ movie }: TProps) => {
     const navigate = useNavigate();
     const navigateToDetails = useCallback(() => {
-        navigate(`${MOVIE_PATH}?movieId=${movie.movieId}`);
+        navigate(`${MOVIE_DETAILS_PATH}?movieId=${movie.movieId}`);
     }, [movie, navigate]);
 
     return (

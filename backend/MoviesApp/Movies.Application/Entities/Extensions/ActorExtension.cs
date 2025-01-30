@@ -11,6 +11,8 @@ namespace Movies.Application.Entities
             {
                 ActorId = actor.ActorId,
                 Name = actor.Name,
+                Description = actor.Description,
+                ImageUrl = actor.ImageUrl,
                 Movies = actor.Movies?.Select(m => m.ToDomain()).ToArray() ?? [],
             };
         }
@@ -21,6 +23,8 @@ namespace Movies.Application.Entities
             {
                 ActorId = actor.ActorId,
                 Name = actor.Name,
+                Description = actor.Description,
+                ImageUrl = actor.ImageUrl,
             };
         }
 
@@ -31,6 +35,8 @@ namespace Movies.Application.Entities
             {
                 ActorId = actor.ActorId,
                 Name = actor.Name,
+                Description = actor.Description,
+                ImageUrl = actor.ImageUrl,
             };
         }
 
@@ -40,6 +46,8 @@ namespace Movies.Application.Entities
             {
                 ActorId = actor.ActorId,
                 Name = actor.Name,
+                Description = actor.Description,
+                ImageUrl = actor.ImageUrl,
             };
         }
     }

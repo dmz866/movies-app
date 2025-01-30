@@ -4,7 +4,7 @@ import { getMovieUseCase } from "../../api/use-cases/get-movie-use-case";
 import { MOVIES_PATH } from "../../constants";
 import { Movie } from "../../models";
 
-export const useMoviePage = () => {
+export const useMovieDetailsPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [movie, setMovie] = useState<Movie>();
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const useMoviePage = () => {
 
         setMovie(result);
         setIsLoading(false);
-    }, [setIsLoading, setMovie]);
+    }, [setIsLoading, setMovie, navigate]);
 
     return {
         isLoading,

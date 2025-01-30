@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { getMoviesByNameUseCase } from "../../api/use-cases";
-import { MovieContext } from "../../context/movie-context";
+import { MovieContext } from "../../context/MovieContext/MovieContext";
 import { Movie } from "../../models";
 
 export const useMoviesPage = () => {
@@ -31,7 +31,6 @@ export const useMoviesPage = () => {
         setNoMovieFound(result?.length === 0);
         setIsLoading(false);
     }, [setIsLoading, setMovies, setNoMovieFound, updateMoviesFound]);
-
 
     useEffect(() => {
         if (!searchMovieName) return;
