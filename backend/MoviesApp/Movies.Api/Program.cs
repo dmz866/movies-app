@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Movies.Api.Authentication;
+using Movies.Api.Filters;
 using Movies.Api.Middlewares;
 using Movies.Application;
 using Movies.Services;
@@ -30,6 +31,7 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://github.com/dmz866/")
         },
     });
+    options.OperationFilter<ApiKeyHeader>();
 
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
@@ -50,8 +52,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             };
         });
 
-builder.Services.AddAuthentication("ApiKey")
-        .AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
+builder.Services.AddAuthentication("ApiKey").AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>("ApiKey", null);
 
 builder.Services.AddAuthorization(options =>
 {

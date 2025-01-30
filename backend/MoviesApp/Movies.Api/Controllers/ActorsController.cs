@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Api.Controllers;
+using Movies.Api.Filters;
 using Movies.Application.Commands.Actors.CreateActor;
 using Movies.Application.Commands.Actors.DeleteActor;
 using Movies.Application.Commands.Actors.UpdateActor;
@@ -91,6 +92,7 @@ namespace Actors.Api.Controllers
         /// <response code="400">If the request is invalid and the new Actor record is null</response>
         [HttpPost]
         [Authorize("ApiKeyOrBearer")]
+        [ApiKeyHeader]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateActor([FromBody] CreateActorCommand request)
