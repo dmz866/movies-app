@@ -17,3 +17,5 @@ backend/MoviesApp/MoviesApp/appsettings.Development.json
 /backend/MoviesApp/obj/Movies.Services.EntityFrameworkCore.targets
 /backend/MoviesApp/Movies.Api/appsettings.Development.json
 frontend/movies-app/env
+/backend/MoviesApp/Movies.Tests/obj
+/backend/MoviesApp/Movies.Tests/bin
