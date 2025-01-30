@@ -11,8 +11,7 @@ namespace Movies.Application.Entities
             return new MovieRating()
             {
                 MovieRatingId = movieRating.MovieRatingId,
-                Name = movieRating.Name,
-                Description = movieRating.Description,
+                Value = movieRating.Value,
                 MovieId = movieRating.MovieId,
             };
         }
@@ -22,8 +21,7 @@ namespace Movies.Application.Entities
             return new Services.Models.MovieRating()
             {
                 MovieRatingId = movieRating.MovieRatingId,
-                Name = movieRating.Name,
-                Description = movieRating.Description,
+                Value = movieRating.Value,
                 MovieId = movieRating.MovieId,
             };
         }
@@ -34,8 +32,7 @@ namespace Movies.Application.Entities
             return new Services.Models.MovieRating()
             {
                 MovieRatingId = movieRating.MovieRatingId,
-                Name = movieRating.Name,
-                Description = movieRating.Description,
+                Value = movieRating.Value,
                 MovieId = movieRating.MovieId,
             };
         }
@@ -45,8 +42,7 @@ namespace Movies.Application.Entities
             return new Services.Models.MovieRating()
             {
                 MovieRatingId = movieRating.MovieRatingId,
-                Name = movieRating.Name,
-                Description = movieRating.Description,
+                Value = movieRating.Value,
                 MovieId = movieRating.MovieId,
             };
         }

@@ -6,4 +6,5 @@ export type Movie = {
     description: string;
     imageUrl?: string;
     actors?: Actor[];
+    rating: number;
 }

@@ -35,9 +35,15 @@ export const MoviePage = () => {
                         <div className='flex gap-x-4'>
                             <p className="text-sm font-bold my-4">{movie.description}</p>
                             <img className='rounded-xl' alt={movie.name} src={movie.imageUrl || '/images/no-picture.jpg'} height={300} width={200} /></div>
-                        <p className="text-xl font-bold my-2">Actors</p>
-                        <div className="flex-row">
-                            {movie.actors?.map((a, indx) => <li key={`${a.name}-${indx}`}>{a.name}</li>)}
+
+                        <div className="flex">
+                            <div className="flex-row">
+                                <p className="text-xl font-bold my-2">Actors</p>
+                                {movie.actors?.map((a, indx) => <li key={`${a.name}-${indx}`}>{a.name}</li>)}
+                            </div>
+                            <div className="flex-row">
+                                <p className="text-xl font-bold my-2">Rating: {movie.rating || 0.0}</p>
+                            </div>
                         </div>
                         <div className='flex justify-center mt-5'>
                             <button className="mx-auto w-96 border rounded-lg" onClick={navigateToMovies}>Back</button>
