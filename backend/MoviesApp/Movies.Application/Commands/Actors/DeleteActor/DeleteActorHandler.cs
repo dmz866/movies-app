@@ -3,7 +3,7 @@ using Movies.Services.Interfaces;
 
 namespace Movies.Application.Commands.Actors.DeleteActor
 {
-    public class DeleteActorHandler : IRequestHandler<DeleteActorCommand>
+    public class DeleteActorHandler : IRequestHandler<DeleteActorCommand, int>
     {
         private readonly IActorService _actorService;
 
@@ -12,9 +12,9 @@ namespace Movies.Application.Commands.Actors.DeleteActor
             _actorService = actorService;
         }
 
-        public async Task Handle(DeleteActorCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(DeleteActorCommand request, CancellationToken cancellationToken)
         {
-            await _actorService.DeleteActor(request.ActorId);
+            return await _actorService.DeleteActor(request.ActorId);
         }
     }
 }

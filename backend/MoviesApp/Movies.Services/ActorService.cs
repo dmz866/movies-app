@@ -19,17 +19,15 @@ namespace Movies.Services
             return model.Entity;
         }
 
-        public async Task DeleteActor(int actorId)
+        public async Task<int> DeleteActor(int actorId)
         {
             var actor = await GetActor(actorId);
 
-            if (actor == null)
-            {
-                throw new Exception($"Actor {actorId} not found");
-            }
+            if (actor == null) return -1;
 
             _context.Actors.Remove(actor);
-            await _context.SaveChangesAsync();
+            
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<Actor?> GetActor(int actorId)

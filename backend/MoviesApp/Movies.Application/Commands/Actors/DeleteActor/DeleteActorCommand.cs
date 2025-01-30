@@ -2,8 +2,8 @@
 
 namespace Movies.Application.Commands.Actors.DeleteActor
 {
-    public class DeleteActorCommand : IRequest
+    public class DeleteActorCommand : IRequest<int>
     {
-        public int ActorId { get; set; }
+        public required int ActorId { get; set; }
     }
 }

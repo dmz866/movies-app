@@ -33,7 +33,6 @@ namespace Movies.Application.Entities
         {
             return new Services.Models.Actor()
             {
-                ActorId = actor.ActorId,
                 Name = actor.Name,
                 Description = actor.Description,
                 ImageUrl = actor.ImageUrl,

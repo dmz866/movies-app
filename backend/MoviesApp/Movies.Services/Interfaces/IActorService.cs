@@ -12,6 +12,6 @@ namespace Movies.Services.Interfaces
 
         Task<IEnumerable<Actor>> GetActors(string? name);
 
-        Task DeleteActor(int actorId);
+        Task<int> DeleteActor(int actorId);
     }
 }
