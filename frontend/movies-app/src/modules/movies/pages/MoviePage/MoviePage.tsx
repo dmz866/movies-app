@@ -21,7 +21,7 @@ export const MoviePage = () => {
 
     return (
         <BasicContainer>
-            <div className='flex mx-56'>
+            <div className='flex mx-56 pb-10'>
                 {
                     (isLoading || !movie) &&
                     <div className='flex justify-center'>
@@ -36,8 +36,8 @@ export const MoviePage = () => {
                             <p className="text-sm font-bold my-4">{movie.description}</p>
                             <img className='rounded-xl' alt={movie.name} src={movie.imageUrl || '/images/no-picture.jpg'} height={300} width={200} /></div>
                         <p className="text-xl font-bold my-2">Actors</p>
-                        <div className="flex">
-                            {movie.actors?.map((a, indx) => <span key={`${a.name}-${indx}`}>{a.name}</span>)}
+                        <div className="flex-row">
+                            {movie.actors?.map((a, indx) => <li key={`${a.name}-${indx}`}>{a.name}</li>)}
                         </div>
                         <div className='flex justify-center mt-5'>
                             <button className="mx-auto w-96 border rounded-lg" onClick={navigateToMovies}>Back</button>

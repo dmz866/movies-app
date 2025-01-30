@@ -79,6 +79,36 @@ namespace Movies.Api.Migrations
                     b.HasKey("ActorId");
 
                     b.ToTable("Actors");
+
+                    b.HasData(
+                        new
+                        {
+                            ActorId = 1,
+                            CreatedBy = "",
+                            Name = "Robert De Niro",
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            ActorId = 2,
+                            CreatedBy = "",
+                            Name = "Jack Nicholson",
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            ActorId = 4,
+                            CreatedBy = "",
+                            Name = "Marlon Brando",
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            ActorId = 5,
+                            CreatedBy = "",
+                            Name = "Denzel Washington",
+                            UpdatedBy = ""
+                        });
                 });
 
             modelBuilder.Entity("Movies.Services.Models.Movie", b =>
@@ -156,9 +186,9 @@ namespace Movies.Api.Migrations
                         {
                             MovieId = 5,
                             CreatedBy = "",
-                            Description = "Ang Lee's adaptation of Annie Proulx's short story (scribed by Larry McMurtry and Diana Ossana, and also featuring in our list of the 50 greatest LGBTQ+ movies) retains its source's sensitivity and grace whilst expanding its scope gorgeously, 10,000 words of prose turned into a sweeping cinematic romance for the ages before our very eyes. Played out against the beautiful mountain landscapes of Wyoming (or, in reality, the Canadian Rockies), the decades-spanning love story between shepherds Ennis Del Mar (Ledger) and Jack Twist (Gyllenhaal) — two men who unexpectedly find love on the titular mountainside, only to find it tested over the years as societal mores and heteronormative expectations work against them — is sensually observed and immaculately shot. Not only does it give you hope and break your heart in equal measure, but the multiple Oscar-winning movie's impact on queer cinema continues to be felt today. Even now, almost two decades later, we still don't know how to quit it (and honestly, we don't want to).",
-                            ImageUrl = "https://images.bauerhosting.com/legacy/media/5e1a/1b87/f8b0/692c/5005/a5bf/54-brokeback-mountain.jpg?auto=format&w=1200&q=80",
-                            Name = "Brokeback Mountain",
+                            Description = "A perfect meeting of two creative forces' artistic sensibilities, the Coen brothers' adaptation of Cormac McCarthy's literary great sees the directorial duo imbue the existentialism of McCarthy's book with their signature brand of dark and violent filmmaking. The result is a tense, slow, and mysterious take on the chase movie format, lensed immaculately by legendary DP Roger Deakins. It's also a film that thoughtfully considers the question of how — or even if — good people can ever hope to deal with a world that's entirely gone to shit. And lest we forget, this was the movie that gave us Javier Bardem's cold-blooded sociopathic killer Anton Chigurh, a villain so terrifying that Hollywood has scarcely been able to resist casting Bardem as the go-to bad guy ever since.",
+                            ImageUrl = "https://images.bauerhosting.com/legacy/media/5e20/987c/ec7e/5492/ffd5/9229/12-no-country-for-old-men.jpg?auto=format&w=1200&q=80",
+                            Name = "No Country For Old Men",
                             UpdatedBy = ""
                         },
                         new
@@ -241,6 +271,72 @@ namespace Movies.Api.Migrations
                     b.HasIndex("MovieId");
 
                     b.ToTable("MovieActors");
+
+                    b.HasData(
+                        new
+                        {
+                            MovieActorId = 1,
+                            ActorId = 1,
+                            CreatedBy = "",
+                            MovieId = 1,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 2,
+                            ActorId = 2,
+                            CreatedBy = "",
+                            MovieId = 1,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 3,
+                            ActorId = 2,
+                            CreatedBy = "",
+                            MovieId = 2,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 4,
+                            ActorId = 2,
+                            CreatedBy = "",
+                            MovieId = 2,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 5,
+                            ActorId = 2,
+                            CreatedBy = "",
+                            MovieId = 3,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 6,
+                            ActorId = 1,
+                            CreatedBy = "",
+                            MovieId = 3,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 7,
+                            ActorId = 4,
+                            CreatedBy = "",
+                            MovieId = 4,
+                            UpdatedBy = ""
+                        },
+                        new
+                        {
+                            MovieActorId = 8,
+                            ActorId = 5,
+                            CreatedBy = "",
+                            MovieId = 4,
+                            UpdatedBy = ""
+                        });
                 });
 
             modelBuilder.Entity("Movies.Services.Models.MovieRating", b =>

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Movies.Services.Contexts;
 using Movies.Services.Interfaces;
 using Movies.Services.Models;
@@ -47,9 +48,15 @@ namespace Movies.Services
         public async Task<Movie?> GetMovie(int movieId)
         {
             return await _context.Movies
-                .Include(a => a.Actors)
-                .Include(a => a.MovieRatings)
                 .Where(u => u.MovieId.Equals(movieId))
+                .Select(a => new Movie { 
+                    Name = a.Name,
+                    Description = a.Description,
+                    ImageUrl = a.ImageUrl,
+                    MovieId = a.MovieId,
+                    Actors = _context.MovieActors.Where(ma => ma.MovieId.Equals(movieId)).Select(ma => ma.Actor).ToList(),
+                    MovieRatings = _context.MovieRatings.Where(ma => ma.MovieId.Equals(movieId)).ToList(),
+                })
                 .FirstOrDefaultAsync();
         }
 

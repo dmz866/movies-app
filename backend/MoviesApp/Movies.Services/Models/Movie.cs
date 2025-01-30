@@ -8,7 +8,9 @@
 
         public string? Description { get; set; }
 
-        public string? ImageUrl { get; set; }        
+        public string? ImageUrl { get; set; }
+
+        public IEnumerable<MovieActor>? MovieActors { get; set; }
 
         public IEnumerable<Actor>? Actors { get; set; }
 

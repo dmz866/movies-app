@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router';
 import { Header } from '../../common/components';
 import { ACTORS_PATH, MOVIE_PATH, MOVIES_PATH } from '../constants';
 import { IMovieContext, MovieContext } from '../context/movie-context';
+import { Movie } from '../models';
 import { ActorsPage } from '../pages/ActorsPage/ActorsPage';
 import { HomePage } from '../pages/HomePage/HomePage';
 import { MoviePage } from '../pages/MoviePage/MoviePage';
@@ -21,13 +22,19 @@ const headerLinks = [
 
 export const MoviesNavigationRouter = () => {
     const [searchMovieName, setSearchMovieName] = useState<string | undefined>();
+    const [moviesFound, setMoviesFound] = useState<Movie[]>();
     const updateSearchMovieName = useCallback((value: string) => {
         setSearchMovieName(value);
     }, []);
+    const updateMoviesFound = useCallback((value: Movie[]) => {
+        setMoviesFound(value);
+    }, []);
     const contextValue = useMemo(() => ({
         searchMovieName,
-        updateSearchMovieName
-    } as IMovieContext), [searchMovieName, updateSearchMovieName]);
+        moviesFound,
+        updateSearchMovieName,
+        updateMoviesFound,
+    } as IMovieContext), [searchMovieName, moviesFound, updateSearchMovieName, updateMoviesFound]);
 
     return (
         <div className="bg-movies h-full">

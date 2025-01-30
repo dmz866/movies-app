@@ -8,9 +8,9 @@
 
         public required int ActorId { get; set; }
 
-        public required Movie Movie { get; set; }
+        public virtual Movie Movie { get; set; }
 
-        public required Actor Actor { get; set; }
+        public virtual Actor Actor { get; set; }
 
         public DateTimeOffset? Created { get; set; }
 

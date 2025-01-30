@@ -13,6 +13,7 @@ namespace Movies.Application.Entities
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageUrl = movie.ImageUrl,
+                Actors = movie.Actors?.Select(a => a.ToDomain()).ToArray()
             };
         }
 
@@ -24,9 +25,10 @@ namespace Movies.Application.Entities
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageUrl = movie.ImageUrl,
+                Actors = (movie.Actors != null) ? (IEnumerable<Services.Models.Actor>)movie.Actors.ToList() : null,
+                MovieRatings = (movie.MovieRatings != null) ? (IEnumerable<Services.Models.MovieRating>)movie.MovieRatings.ToList() : null
             };
         }
-
 
         public static Services.Models.Movie ToModel(this CreateMovieCommand movie)
         {
@@ -36,6 +38,8 @@ namespace Movies.Application.Entities
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageUrl = movie.ImageUrl,
+                Actors = movie.Actors?.Select(a => a.ToModel()),
+                MovieRatings = movie.MovieRatings?.Select(a => a.ToModel()),
             };
         }
 
@@ -47,6 +51,8 @@ namespace Movies.Application.Entities
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageUrl = movie.ImageUrl,
+                Actors = movie.Actors?.Select(a => a.ToModel()),
+                MovieRatings = movie.MovieRatings?.Select(a => a.ToModel()),
             };
         }
     }

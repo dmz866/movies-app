@@ -117,7 +117,80 @@ namespace Movies.Services.Contexts
                     Description = "After his directorial debut Piranha II: Flying Killers fell on its face, James Cameron could've been forgiven for calling it quits on a filmmaking career in Hollywood. Instead, he made The Terminator — and the rest, as they say, is history (which you can read about in detail in our ultimate interview on the movie with Cameron himself). Shot on a $6 million budget, Cameron's sophomore feature may crib a little from Michael Crichton's Westworld and Harlan Ellison's Outer Limits episode 'Soldier', but its action — which revolves around Arnold Schwarzenegger's instantly iconic shot-gun-toting, shades-rocking, time-travelling cyborg killer — is, outside of Cameron's own oeuvre since, without comparison. Made with all the relentless tension of a slasher (after all, what is Arnie's Terminator if not Michael Myers in leathers?) and the kinetic thrills of a balls-to-the-wall blockbuster, nothing has been the same since the T-800 told Linda Hamilton's Sarah Connor \"Come with me if you want to live”.",
                     ImageUrl = "https://images.bauerhosting.com/empire/2024/11/the-terminator-2.jpg?auto=format&w=1200&q=80"
                 }
+            );
 
+            modelBuilder.Entity<Actor>().HasData(
+                new Actor 
+                {
+                    ActorId = 1,
+                    Name = "Robert De Niro"
+                },
+                new Actor
+                {
+                    ActorId = 2,
+                    Name = "Jack Nicholson"
+                },
+                new Actor
+                {
+                    ActorId = 4,
+                    Name = "Marlon Brando"
+                },
+                new Actor
+                {
+                    ActorId = 5,
+                    Name = "Denzel Washington"
+                }
+            );
+
+            modelBuilder.Entity<MovieActor>().HasData(
+                new MovieActor
+                {
+                    MovieActorId = 1,
+                    MovieId = 1,
+                    ActorId = 1,
+                },
+                new MovieActor
+                {
+                    MovieActorId = 2,
+                    MovieId = 1,
+                    ActorId = 2,
+                },
+                new MovieActor
+                 {
+                     MovieActorId = 3,
+                     MovieId = 2,
+                     ActorId = 2,
+                 },
+                new MovieActor
+                {
+                    MovieActorId = 4,
+                    MovieId = 2,
+                    ActorId = 5,
+                },
+                new MovieActor
+                {
+                    MovieActorId = 5,
+                    MovieId = 3,
+                    ActorId = 2,
+                },
+                new MovieActor
+                {
+                    MovieActorId = 6,
+                    MovieId = 3,
+                    ActorId = 1,
+                },
+                new MovieActor
+                {
+                    MovieActorId = 7,
+                    MovieId = 4,
+                    ActorId = 4,
+                },
+                new MovieActor
+                {
+                    MovieActorId = 8,
+                    MovieId = 4,
+                    ActorId = 5,
+                }
             );
         }
     }

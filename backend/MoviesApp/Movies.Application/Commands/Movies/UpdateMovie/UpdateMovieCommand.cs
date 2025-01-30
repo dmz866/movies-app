@@ -13,6 +13,8 @@ namespace Movies.Application.Commands.Movies.UpdateMovie
 
         public string? ImageUrl { get; set; }
 
+        public IEnumerable<Actor>? Actors { get; set; }
+
         public IEnumerable<MovieRating>? MovieRatings { get; set; }
     }
 }
