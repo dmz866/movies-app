@@ -80,7 +80,6 @@ builder.Services.AddCors(
                           });
                   });
 
-
 var app = builder.Build();
 
 app.UseMiddleware<ErrorHandlingMiddleware>();

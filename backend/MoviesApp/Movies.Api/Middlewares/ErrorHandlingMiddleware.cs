@@ -22,12 +22,11 @@ namespace Movies.Api.Middlewares
             }
             catch (Exception ex)
             {
-                await HandleExceptionAsync(context, ex, _logger);
+                await HandleException(context, ex, _logger);
             }
         }
 
-        private async Task HandleExceptionAsync(HttpContext context, Exception exception,
-        ILogger<ErrorHandlingMiddleware> logger)
+        private async Task HandleException(HttpContext context, Exception exception, ILogger<ErrorHandlingMiddleware> logger)
         {
             object errors = null;
             
@@ -46,6 +45,7 @@ namespace Movies.Api.Middlewares
             }
 
             context.Response.ContentType = "application/json";
+           
             if (errors != null)
             {
                 var result = JsonConvert.SerializeObject(new { errors });

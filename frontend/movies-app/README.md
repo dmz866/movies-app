@@ -1,13 +1,15 @@
+### API
+
+## Build the database
+
+- Create an empty database (SQL Server) called "Movies"
+- Open the BE solution and build it
+- Open the package manager console and run the command `dotnet ef database update --project Movies.Api` to create all tables and dummy data
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### API
-
-- Database
-
-
-
 
 ## Available Scripts
 
