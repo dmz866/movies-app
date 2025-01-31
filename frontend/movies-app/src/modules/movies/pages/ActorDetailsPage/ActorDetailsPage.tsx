@@ -9,7 +9,7 @@ export const ActorDetailsPage = () => {
     const [search] = useSearchParams();
     const navigate = useNavigate();
     const navigateToActors = useCallback(() => navigate(ACTORS_PATH), []);
-    const { isLoading, actor, getActor } = useActorDetailsPage();
+    const { isLoading, actor, isFinished, getActor } = useActorDetailsPage();
 
     useEffect(() => {
         const id = search.get('actorId') ? +search.get('actorId')! : undefined;
@@ -18,6 +18,12 @@ export const ActorDetailsPage = () => {
 
         getActor(id!);
     }, [search]);
+
+    useEffect(() => {
+        if (isFinished && !actor) {
+            navigateToActors();
+        }
+    }, [isFinished, actor]);
 
     return (
         <BasicContainer>

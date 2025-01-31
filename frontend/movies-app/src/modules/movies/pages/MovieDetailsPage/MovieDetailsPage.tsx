@@ -9,7 +9,7 @@ export const MovieDetailsPage = () => {
     const [search] = useSearchParams();
     const navigate = useNavigate();
     const navigateToMovies = useCallback(() => navigate(MOVIES_PATH), [navigate]);
-    const { isLoading, movie, getMovie } = useMovieDetailsPage();
+    const { isLoading, movie, isFinished, getMovie } = useMovieDetailsPage();
 
     useEffect(() => {
         const id = search.get('movieId') ? +search.get('movieId')! : undefined;
@@ -18,6 +18,12 @@ export const MovieDetailsPage = () => {
 
         getMovie(id!);
     }, [search, navigate, navigateToMovies, getMovie]);
+
+    useEffect(() => {
+        if (isFinished && !movie) {
+            navigateToMovies();
+        }
+    }, [isFinished, movie]);
 
     return (
         <BasicContainer>

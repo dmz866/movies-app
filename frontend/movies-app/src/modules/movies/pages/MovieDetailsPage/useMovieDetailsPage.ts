@@ -6,6 +6,7 @@ import { Movie } from "../../models";
 
 export const useMovieDetailsPage = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isFinished, setIsFinished] = useState(false);
     const [movie, setMovie] = useState<Movie>();
     const navigate = useNavigate();
 
@@ -18,13 +19,15 @@ export const useMovieDetailsPage = () => {
 
         result = await getMovieUseCase(movieId);
 
+        setIsFinished(true);
         setMovie(result);
         setIsLoading(false);
-    }, [setIsLoading, setMovie, navigate]);
+    }, [setIsLoading, setMovie, navigate, setIsFinished]);
 
     return {
         isLoading,
         movie,
+        isFinished,
         getMovie,
     };
 }
