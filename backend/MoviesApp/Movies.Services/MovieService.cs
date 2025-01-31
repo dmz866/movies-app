@@ -89,7 +89,7 @@ namespace Movies.Services
                 return await _context.Movies
                     .Include(a => a.Actors)
                     .Include(a => a.MovieRatings)
-                    .Where(m => m.Name.Contains(name))
+                    .Where(m => m.Name.ToLower().Contains(name.ToLower()))
                     .ToListAsync();
             }
 
