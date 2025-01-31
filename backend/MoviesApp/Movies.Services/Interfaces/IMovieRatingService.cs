@@ -4,7 +4,7 @@ namespace Movies.Services.Interfaces
 {
     public interface IMovieRatingService
     {
-        Task<MovieRating> CreateMovieRating(MovieRating movieRating);
+        Task<MovieRating?> CreateMovieRating(MovieRating movieRating);
 
         Task<MovieRating> UpdateMovieRating(MovieRating movieRating);
 
@@ -12,6 +12,6 @@ namespace Movies.Services.Interfaces
 
         Task<IEnumerable<MovieRating>> GetMovieRatings(int movieId);
 
-        Task DeleteMovieRating(int movieRatingId);
+        Task<int> DeleteMovieRating(int movieRatingId);
     }
 }

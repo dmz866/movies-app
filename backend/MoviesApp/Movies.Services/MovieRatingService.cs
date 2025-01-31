@@ -11,15 +11,19 @@ namespace Movies.Services
         {
         }
 
-        public async Task<MovieRating> CreateMovieRating(MovieRating movieRating)
-        {            
+        public async Task<MovieRating?> CreateMovieRating(MovieRating movieRating)
+        {
+            var movie = await _context.Movies.Where(m => m.MovieId.Equals(movieRating.MovieId)).FirstOrDefaultAsync();
+
+            if (movie == null) return null; 
+
             var model = await _context.MovieRatings.AddAsync(movieRating);
             await _context.SaveChangesAsync();
 
             return model.Entity;
         }
 
-        public async Task DeleteMovieRating(int movieRatingId)
+        public async Task<int> DeleteMovieRating(int movieRatingId)
         {
             var movierating = await GetMovieRating(movieRatingId);
 
@@ -29,7 +33,8 @@ namespace Movies.Services
             }
 
             _context.MovieRatings.Remove(movierating);
-            await _context.SaveChangesAsync();
+           
+            return await _context.SaveChangesAsync();
         }
 
         public async Task<MovieRating?> GetMovieRating(int movieRatingId)

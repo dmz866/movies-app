@@ -92,11 +92,13 @@ namespace Actors.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns a new created Actor</response>
         /// <response code="400">If the request is invalid and the new Actor record is null</response>        
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPost]
         [Authorize("ApiKeyOrBearer")]
         [ApiKeyHeader]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> CreateActor([FromBody] CreateActorCommand request)
         {
             var result = await _mediator.Send(request);
@@ -123,10 +125,12 @@ namespace Actors.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns the updated Actor record</response>
         /// <response code="400">If the request is invalid</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPut]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> UpdateActor([FromBody] UpdateActorCommand request)
         {
             var result = await _mediator.Send(request);
@@ -147,10 +151,12 @@ namespace Actors.Api.Controllers
         /// </remarks>
         /// <response code="200">If Actor record deleted successfully</response>
         /// <response code="404">If the Actor record does not exist</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpDelete("{actorId}")]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> DeleteActor(int actorId)
         {
             var request = new DeleteActorCommand() { ActorId = actorId };
@@ -176,11 +182,13 @@ namespace Actors.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns a new list of Movie Actor records</response>
         /// <response code="400">If the request is invalid</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPost("assign-movies")]
         [Authorize("ApiKeyOrBearer")]
         [ApiKeyHeader]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> AssignMoviesToActor([FromBody] AssignMoviesToActorCommand request)
         {
             var result = await _mediator.Send(request);

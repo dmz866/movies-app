@@ -3,7 +3,7 @@ using Movies.Services.Interfaces;
 
 namespace Movies.Application.Commands.MovieRatings.DeleteMovieRating
 {
-    public class DeleteMovieRatingHandler : IRequestHandler<DeleteMovieRatingCommand>
+    public class DeleteMovieRatingHandler : IRequestHandler<DeleteMovieRatingCommand, int>
     {
         private readonly IMovieRatingService _movieratingService;
 
@@ -12,9 +12,9 @@ namespace Movies.Application.Commands.MovieRatings.DeleteMovieRating
             _movieratingService = movieratingService;
         }
 
-        public async Task Handle(DeleteMovieRatingCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(DeleteMovieRatingCommand request, CancellationToken cancellationToken)
         {
-            await _movieratingService.DeleteMovieRating(request.MovieRatingId);
+            return await _movieratingService.DeleteMovieRating(request.MovieRatingId);
         }
     }
 }

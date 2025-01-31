@@ -43,7 +43,7 @@ namespace MovieRatings.Api.Controllers
             var request = new GetMovieRatingQuery() { MovieRatingId = movieRatingId };
             var result = await _mediator.Send(request);
 
-            return Ok(result);
+            return (result != null) ? Ok(result) : NotFound();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace MovieRatings.Api.Controllers
             var request = new GetMovieRatingsQuery() { MovieId = movieId };
             var result = await _mediator.Send(request);
 
-            return Ok(result);
+            return (result != null && result.Any()) ? Ok(result) : NotFound();
         }
 
         /// <summary>
@@ -88,10 +88,12 @@ namespace MovieRatings.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns a new created Movie Rating</response>
         /// <response code="400">If the request is invalid and the new Movie Rating record is null</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPost]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> CreateMovieRating([FromBody] CreateMovieRatingCommand request)
         {
             var result = await _mediator.Send(request);
@@ -117,15 +119,18 @@ namespace MovieRatings.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns the updated Movie Rating record</response>
         /// <response code="400">If the request is invalid</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPut]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> UpdateMovieRating([FromBody] UpdateMovieRatingCommand request)
         {
             var result = await _mediator.Send(request);
 
-            return Ok(result);
+            return (result != null) ? Ok(result) : NotFound();
         }
 
         /// <summary>
@@ -141,16 +146,18 @@ namespace MovieRatings.Api.Controllers
         /// </remarks>
         /// <response code="200">If Movie Rating record deleted successfully</response>
         /// <response code="400">If the Movie Rating record does not exist</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpDelete("{movieRatingId}")]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> DeleteMovieRating(int movieRatingId)
         {
             var request = new DeleteMovieRatingCommand() { MovieRatingId = movieRatingId };
-            await _mediator.Send(request);
+            var result = await _mediator.Send(request);
 
-            return Ok();
+            return (result > 0) ? Ok() : NotFound();
         }
     }
 }

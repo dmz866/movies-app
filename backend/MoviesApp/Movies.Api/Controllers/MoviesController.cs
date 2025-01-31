@@ -42,7 +42,7 @@ namespace Movies.Api.Controllers
             var request = new GetMovieQuery() { MovieId = movieId };
             var result = await _mediator.Send(request);
 
-            return Ok(result);
+            return (result != null) ? Ok(result) : NotFound();
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Movies.Api.Controllers
             var request = new GetMoviesQuery() { Name = name };
             var result = await _mediator.Send(request);
 
-            return Ok(result);
+            return (result != null && result.Any()) ? Ok(result) : NotFound();
         }
 
         /// <summary>
@@ -88,10 +88,12 @@ namespace Movies.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns a new created Movie</response>
         /// <response code="400">If the request is invalid and the new Movie record is null</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPost]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> CreateMovie([FromBody] CreateMovieCommand request)
         {
             var result = await _mediator.Send(request);
@@ -118,10 +120,12 @@ namespace Movies.Api.Controllers
         /// </remarks>
         /// <response code="200">Returns the updated Movie record</response>
         /// <response code="400">If the request is invalid</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpPut]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> UpdateMovie([FromBody] UpdateMovieCommand request)
         {
             var result = await _mediator.Send(request);
@@ -142,10 +146,12 @@ namespace Movies.Api.Controllers
         /// </remarks>
         /// <response code="200">If Movie record deleted successfully</response>
         /// <response code="400">If the Movie record does not exist</response>
+        /// <response code="401">If the request is unauthorized</response>        
         [HttpDelete("{movieId}")]
         [Authorize("ApiKeyOrBearer")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> DeleteMovie(int movieId)
         {
             var request = new DeleteMovieCommand() { MovieId = movieId };

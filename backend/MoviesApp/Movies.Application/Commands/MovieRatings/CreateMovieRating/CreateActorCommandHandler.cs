@@ -4,7 +4,7 @@ using Movies.Services.Interfaces;
 
 namespace Movies.Application.Commands.MovieRatings.CreateMovieRating
 {
-    public class CreateMovieRatingCommandHandler : IRequestHandler<CreateMovieRatingCommand, MovieRating>
+    public class CreateMovieRatingCommandHandler : IRequestHandler<CreateMovieRatingCommand, MovieRating?>
     {
         private readonly IMovieRatingService _movieratingService;
 
@@ -13,11 +13,11 @@ namespace Movies.Application.Commands.MovieRatings.CreateMovieRating
             _movieratingService = movieratingService;
         }
 
-        public async Task<MovieRating> Handle(CreateMovieRatingCommand request, CancellationToken cancellationToken)
+        public async Task<MovieRating?> Handle(CreateMovieRatingCommand request, CancellationToken cancellationToken)
         {
-            var movierating = await _movieratingService.CreateMovieRating(request.ToModel());
+            var movieRating = await _movieratingService.CreateMovieRating(request.ToModel());
 
-            return movierating.ToDomain();
+            return movieRating?.ToDomain();
         }
     }
 }
