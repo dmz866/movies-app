@@ -14,14 +14,6 @@
 
         public IEnumerable<Actor>? Actors { get; set; }
 
-        public IEnumerable<MovieRating>? MovieRatings { get; set; }
-
-        public DateTimeOffset? Created { get; set; }
-
-        public string? CreatedBy { get; set; } = string.Empty;
-
-        public DateTimeOffset? Updated { get; set; }
-
-        public string? UpdatedBy { get; set; } = string.Empty;
+        public IEnumerable<MovieRating>? MovieRatings { get; set; }        
     }
 }

@@ -34,12 +34,9 @@ namespace Movies.Application.Entities
         {
             return new Services.Models.Movie()
             {
-                MovieId = movie.MovieId,
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageUrl = movie.ImageUrl,
-                Actors = movie.Actors?.Select(a => a.ToModel()),
-                MovieRatings = movie.MovieRatings?.Select(a => a.ToModel()),
             };
         }
 
@@ -51,8 +48,6 @@ namespace Movies.Application.Entities
                 Name = movie.Name,
                 Description = movie.Description,
                 ImageUrl = movie.ImageUrl,
-                Actors = movie.Actors?.Select(a => a.ToModel()),
-                MovieRatings = movie.MovieRatings?.Select(a => a.ToModel()),
             };
         }
     }

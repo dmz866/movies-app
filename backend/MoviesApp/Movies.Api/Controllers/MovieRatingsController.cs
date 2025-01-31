@@ -5,6 +5,7 @@ using Movies.Api.Controllers;
 using Movies.Application.Commands.MovieRatings.CreateMovieRating;
 using Movies.Application.Commands.MovieRatings.DeleteMovieRating;
 using Movies.Application.Commands.MovieRatings.UpdateMovieRating;
+using Movies.Application.Queries.MovieRatings.GetMovieRating;
 using Movies.Application.Queries.MovieRatings.GetMovieRatings;
 
 namespace MovieRatings.Api.Controllers
@@ -39,17 +40,17 @@ namespace MovieRatings.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetMovieRating(int movieRatingId)
         {
-            var request = new GetMovieRatingsQuery();
+            var request = new GetMovieRatingQuery() { MovieRatingId = movieRatingId };
             var result = await _mediator.Send(request);
 
             return Ok(result);
         }
 
         /// <summary>
-        /// Get a list of MovieRating records
+        /// Get a list of Movie Rating records
         /// </summary>
         /// <param name="movieId"></param>
-        /// <returns>List of MovieRating records</returns>
+        /// <returns>List of Movie Rating records</returns>
         /// <remarks>
         /// Sample request:
         ///

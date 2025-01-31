@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Api.Controllers;
 using Movies.Api.Filters;
+using Movies.Application.Commands.Actors.AssignMoviesToActor;
 using Movies.Application.Commands.Actors.CreateActor;
 using Movies.Application.Commands.Actors.DeleteActor;
 using Movies.Application.Commands.Actors.UpdateActor;
@@ -84,12 +85,13 @@ namespace Actors.Api.Controllers
         ///     {
         ///        "Name": "Name Test",
         ///        "Description": "Description Test",
-        ///        "ImageUrl": "Image Url Test"
+        ///        "ImageUrl": "Image Url Test",
+        ///        "MoviesIds: "[1, 2, 3]"
         ///     }
         ///
         /// </remarks>
         /// <response code="200">Returns a new created Actor</response>
-        /// <response code="400">If the request is invalid and the new Actor record is null</response>
+        /// <response code="400">If the request is invalid and the new Actor record is null</response>        
         [HttpPost]
         [Authorize("ApiKeyOrBearer")]
         [ApiKeyHeader]
@@ -154,7 +156,36 @@ namespace Actors.Api.Controllers
             var request = new DeleteActorCommand() { ActorId = actorId };
             var result = await _mediator.Send(request);
 
-            return (result > 0) ? Ok(result) : NotFound();
+            return (result > 0) ? Ok() : NotFound();
+        }
+
+        /// <summary>
+        /// Creates a list of Movie Actor records
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>A new list of created Movie Actors</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Actors/assign-movies
+        ///     {
+        ///        "ActorId": "1",
+        ///        "MoviesIds: "[1, 2, 3]"
+        ///     }
+        ///
+        /// </remarks>
+        /// <response code="200">Returns a new list of Movie Actor records</response>
+        /// <response code="400">If the request is invalid</response>
+        [HttpPost("assign-movies")]
+        [Authorize("ApiKeyOrBearer")]
+        [ApiKeyHeader]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> AssignMoviesToActor([FromBody] AssignMoviesToActorCommand request)
+        {
+            var result = await _mediator.Send(request);
+
+            return Ok(result);
         }
     }
 }

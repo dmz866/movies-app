@@ -18,9 +18,9 @@ namespace Movies.Application.Queries.Movies.GetMovie
             var movie = await _movieService.GetMovie(request.MovieId);
             var movieDomain = movie?.ToDomain();
 
-            if (movieDomain != null && movie?.MovieRatings != null)
+            if (movieDomain != null && movie?.MovieRatings != null && movie.MovieRatings.Any())
             {
-                movieDomain.Rating = movie.MovieRatings.Sum(m => m.Value);
+                movieDomain.Rating = movie.MovieRatings.Average(m => m.Value);
             }
 
             return movieDomain;

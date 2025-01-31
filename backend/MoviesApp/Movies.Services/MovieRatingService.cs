@@ -38,7 +38,6 @@ namespace Movies.Services
                .Where(u => u.MovieRatingId.Equals(movieRatingId))
                .FirstOrDefaultAsync();
         }
-
         public async Task<IEnumerable<MovieRating>> GetMovieRatings(int movieId)
         {
             return await _context.MovieRatings

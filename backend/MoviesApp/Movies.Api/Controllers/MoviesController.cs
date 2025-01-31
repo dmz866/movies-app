@@ -149,9 +149,9 @@ namespace Movies.Api.Controllers
         public async Task<IActionResult> DeleteMovie(int movieId)
         {
             var request = new DeleteMovieCommand() { MovieId = movieId };
-            await _mediator.Send(request);
+            var result = await _mediator.Send(request);
 
-            return Ok();
+            return (result > 0) ? Ok() : NotFound();
         }
     }
 }

@@ -32,17 +32,39 @@ namespace Movies.Services
             return model.Entity;
         }
 
-        public async Task DeleteMovie(int movieId)
+        public async Task<int> DeleteMovie(int movieId)
         {
-            var movie = await GetMovie(movieId);
+            var movie = await _context.Movies
+                .Where(u => u.MovieId.Equals(movieId))                
+                .FirstOrDefaultAsync();
 
-            if (movie == null)
-            {
-                throw new Exception($"Movie {movieId} not found");
-            }
+            if (movie == null) return -1;
 
+            DeleteMovieActors(movie.MovieId);
+            DeleteMovieRatings(movie.MovieId);
             _context.Movies.Remove(movie);
-            await _context.SaveChangesAsync();
+
+            return await _context.SaveChangesAsync();
+        }
+
+        private void DeleteMovieActors(int movieId)
+        {
+            var movieMovies = _context.MovieActors.Where(ma => ma.MovieId.Equals(movieId));
+
+            if (movieMovies != null && movieMovies.Any())
+            {
+                _context.MovieActors.RemoveRange(movieMovies);
+            }
+        }
+
+        private void DeleteMovieRatings(int movieId)
+        {
+            var movieRatings = _context.MovieRatings.Where(ma => ma.MovieId.Equals(movieId));
+
+            if (movieRatings != null && movieRatings.Any())
+            {
+                _context.MovieRatings.RemoveRange(movieRatings);
+            }
         }
 
         public async Task<Movie?> GetMovie(int movieId)

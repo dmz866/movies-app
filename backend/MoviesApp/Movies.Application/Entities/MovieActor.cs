@@ -1,4 +1,4 @@
-﻿namespace Movies.Services.Models
+﻿namespace Movies.Application.Entities
 {
     public class MovieActor
     {
@@ -7,9 +7,5 @@
         public required int MovieId { get; set; }
 
         public required int ActorId { get; set; }
-
-        public virtual Movie Movie { get; set; }
-
-        public virtual Actor Actor { get; set; }
     }
 }

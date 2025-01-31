@@ -41,9 +41,12 @@ export const MovieDetailsPage = () => {
                                 <p className="text-xl font-bold my-2">Actors</p>
                                 {movie.actors?.map((a, indx) => <li key={`${a.name}-${indx}`}>{a.name}</li>)}
                             </div>
-                            <div className="flex-row">
-                                <p className="text-xl font-bold my-2">Rating: {movie.rating || 0.0}</p>
-                            </div>
+                        </div>
+                        <div className="flex-row">
+                            <p className="text-xl my-2">
+                                <span className='font-bold mr-3'>Rating:</span>
+                                <span>{movie.rating?.toFixed(2) || 0.0}</span>
+                            </p>
                         </div>
                         <div className='flex justify-center mt-5'>
                             <button className="mx-auto w-96 border rounded-lg" onClick={navigateToMovies}>Back</button>

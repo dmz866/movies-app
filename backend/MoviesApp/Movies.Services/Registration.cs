@@ -17,6 +17,7 @@ namespace Movies.Services
             services.AddTransient<IMovieService, MovieService>(provider => new MovieService(provider.GetRequiredService<MoviesContext>(), provider.GetRequiredService<IMovieRatingService>()));
             services.AddTransient<IActorService, ActorService>(provider => new ActorService(provider.GetRequiredService<MoviesContext>()));
             services.AddTransient<IMovieRatingService, MovieRatingService>(provider => new MovieRatingService(provider.GetRequiredService<MoviesContext>()));
+            services.AddTransient<IMovieActorService, MovieActorService>(provider => new MovieActorService(provider.GetRequiredService<MoviesContext>()));
         }
     }
 }

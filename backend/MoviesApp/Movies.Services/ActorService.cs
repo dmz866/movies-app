@@ -21,10 +21,17 @@ namespace Movies.Services
 
         public async Task<int> DeleteActor(int actorId)
         {
-            var actor = await GetActor(actorId);
+            var actor = await _context.Actors.Where(u => u.ActorId.Equals(actorId)).FirstOrDefaultAsync();
 
             if (actor == null) return -1;
 
+            var movieActors = _context.MovieActors.Where(ma => ma.ActorId.Equals(actor.ActorId));
+
+            if (movieActors != null && movieActors.Any())
+            {
+                _context.MovieActors.RemoveRange(movieActors);
+            }
+    
             _context.Actors.Remove(actor);
             
             return await _context.SaveChangesAsync();
@@ -42,6 +49,7 @@ namespace Movies.Services
                     ActorId = a.ActorId,
                     Movies= _context.MovieActors.Where(ma => ma.ActorId.Equals(actorId)).Select(ma => ma.Movie).ToList()
                 })
+
                 .FirstOrDefaultAsync();
         }
 

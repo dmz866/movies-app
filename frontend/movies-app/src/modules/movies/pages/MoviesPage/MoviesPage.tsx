@@ -10,7 +10,7 @@ export const MoviesPage = () => {
         <BasicContainer>
             <div className="mx-32">
                 <div className="justify-center flex-row p-4">
-                    <p className="font-semibold text-white w-full">Search By Name:</p>
+                    <p className="font-semibold text-white w-full">Search Movies by Name:</p>
                     <div className='flex'>
                         <input defaultValue={searchMovieName} name='searchMovieName' type="text" className="text-black py-1 px-2 w-full border rounded-lg" onChange={handleInput} />
                         <button className="px-4 mx-2 border rounded-lg bg-white py-1" onClick={() => handleSearch(searchMovieName!)}>Search</button>

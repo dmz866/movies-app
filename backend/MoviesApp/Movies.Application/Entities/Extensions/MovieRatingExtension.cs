@@ -31,7 +31,6 @@ namespace Movies.Application.Entities
         {
             return new Services.Models.MovieRating()
             {
-                MovieRatingId = movieRating.MovieRatingId,
                 Value = movieRating.Value,
                 MovieId = movieRating.MovieId,
             };

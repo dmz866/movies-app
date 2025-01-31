@@ -15,9 +15,9 @@ namespace Movies.Application.Queries.MovieRatings.GetMovieRatings
 
         public async Task<IEnumerable<MovieRating>> Handle(GetMovieRatingsQuery request, CancellationToken cancellationToken)
         {            
-            var movieratings = await _movieratingService.GetMovieRatings(request.MovieId);
+            var movieRatings = await _movieratingService.GetMovieRatings(request.MovieId);
 
-            return movieratings.Select(m => m.ToDomain());
+            return movieRatings.Select(m => m.ToDomain());
         }
     }
 }
