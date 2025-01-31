@@ -29,7 +29,7 @@ export const MoviesPage = () => {
                     }
                 </div>
                 <div className="p-3 flex justify-center flex-wrap gap-8">
-                    {noMovieFound && <p>No Movies found</p>}
+                    {noMovieFound && <p className='text-white'>No Movies found</p>}
                     {movies?.map((p, indx) => {
                         return <MovieCard key={`${p.name}-${indx}`} movie={p} />
                     })}

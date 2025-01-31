@@ -29,7 +29,7 @@ export const ActorsPage = () => {
                     }
                 </div>
                 <div className="p-3 flex justify-center flex-wrap gap-8">
-                    {noActorFound && <p>No Actors found</p>}
+                    {noActorFound && <p className='text-white'>No Actors found</p>}
                     {actors?.map((p, indx) => {
                         return <ActorCard key={`${p.name}-${indx}`} actor={p} />
                     })}
